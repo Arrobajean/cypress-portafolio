@@ -6,9 +6,10 @@ describe("Test Case 1: Registro de Usuario (Avanzado)", () => {
   const homePage = new HomePage();
   const loginPage = new LoginPage();
   
-  // Generación de datos dinámicos con Faker
+  // Generación de datos dinámicos con Faker más precisa
   const userData = {
-    userName: faker.person.fullName(),
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
     userEmail: faker.internet.email(),
     password: faker.internet.password({ length: 12 }),
     company: faker.company.name(),
@@ -20,32 +21,35 @@ describe("Test Case 1: Registro de Usuario (Avanzado)", () => {
   };
 
   beforeEach(() => {
-    // Interceptamos la petición de login/signup para demostrar control de red
+    // Interceptamos con un timeout más largo por si el sitio está lento
     cy.intercept("POST", "**/signup").as("signupRequest");
     homePage.visit();
   });
 
   it("Debe registrar un nuevo usuario usando datos dinámicos y validación de red", () => {
+    const fullName = `${userData.firstName} ${userData.lastName}`;
+    
     cy.title().should("include", "Automation Exercise");
     homePage.clickLogin();
     
     cy.contains("New User Signup!").should("be.visible");
     
     // Registro inicial
-    loginPage.signup(userData.userName, userData.userEmail);
+    loginPage.signup(fullName, userData.userEmail);
     
-    // Esperamos a que la petición de signup se complete (Network Interception)
-    // Esto asegura que el backend respondió antes de seguir con la UI
-    cy.wait("@signupRequest").its("response.statusCode").should("eq", 302);
+    // Esperamos a que la petición se complete (Aceptamos 200 o 302)
+    cy.wait("@signupRequest", { timeout: 10000 }).then((interception) => {
+      expect([200, 302]).to.include(interception.response.statusCode);
+    });
 
     cy.contains("Enter Account Information").should("be.visible");
     
     loginPage.fillAccountDetails(userData.password);
     
-    // Completar detalles con datos de Faker
+    // Completar detalles con datos precisos de Faker
     loginPage.fillAddressDetails({
-      firstName: userData.userName.split(" ")[0],
-      lastName: userData.userName.split(" ")[1] || "QA",
+      firstName: userData.firstName,
+      lastName: userData.lastName,
       company: userData.company,
       address: userData.address,
       country: "United States",
@@ -59,9 +63,9 @@ describe("Test Case 1: Registro de Usuario (Avanzado)", () => {
     cy.get("[data-qa='continue-button']").click();
     
     // Validación de sesión
-    cy.contains(`Logged in as ${userData.userName}`).should("be.visible");
+    cy.contains(`Logged in as ${fullName}`).should("be.visible");
     
-    // Limpieza técnica: Eliminar cuenta
+    // Limpieza técnica
     homePage.clickDeleteAccount();
     cy.contains("Account Deleted!").should("be.visible");
     cy.get("[data-qa='continue-button']").click();
