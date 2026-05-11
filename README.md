@@ -1,5 +1,7 @@
 # Cypress E2E & API Automation Framework
 
+<!-- Versión de Suite: 1.0.1 - Estabilidad de Rutas Confirmada -->
+
 [![Cypress E2E Tests](https://github.com/Arrobajean/cypress-portafolio/actions/workflows/cypress.yml/badge.svg)](https://github.com/Arrobajean/cypress-portafolio/actions/workflows/cypress.yml)
 ![Cypress version](https://img.shields.io/badge/cypress-15.14.2-brightgreen)
 ![Typescript version](https://img.shields.io/badge/typescript-6.0.3-blue)
