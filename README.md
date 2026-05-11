@@ -109,4 +109,4 @@ El proyecto ejecuta automáticamente la suite de pruebas en cada:
 *   Experiencia con Cypress, TypeScript y CI/CD.
 *   Enfoque en mantenibilidad y calidad de software.
 
-[LinkedIn](https://www.linkedin.com/in/tu-perfil) | [GitHub](https://github.com/Arrobajean)
+[LinkedIn](https://www.linkedin.com/in/jeancastanedah/) | [GitHub](https://github.com/Arrobajean)
