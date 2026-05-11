@@ -1,0 +1,11 @@
+{
+  "validUser": {
+    "email": "testuser_antigravity@mail.com",
+    "password": "Password123!",
+    "name": "arrobajean"
+  },
+  "invalidUser": {
+    "email": "wrong@mail.com",
+    "password": "WrongPassword"
+  }
+}
