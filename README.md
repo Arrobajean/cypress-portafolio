@@ -14,7 +14,8 @@ El proyecto fue diseñado siguiendo principios de escalabilidad, mantenibilidad 
 
 *   **Arquitectura Page Object Model (POM):** Separación clara entre la lógica de los tests y la interacción con los elementos de la UI.
 *   **Validación Híbrida UI + API:** Cobertura integral que incluye pruebas de interfaz y validación de endpoints REST.
-*   **CI/CD con GitHub Actions:** Pipeline automatizado para ejecución en cada Push y Pull Request.
+*   **Cross-Browser Testing:** Suite preparada y configurada para ejecuciones en **Chrome, Firefox y Edge**.
+*   **CI/CD con GitHub Actions:** Pipeline automatizado con estrategia de matriz para ejecuciones paralelas.
 *   **Captura de Evidencia:** Generación automática de screenshots y videos en cada ejecución de los tests.
 *   **Ejecución Headless:** Configuración optimizada para entornos de integración continua.
 *   **Datos Desacoplados:** Uso de fixtures y generadores de datos para pruebas dinámicas.
@@ -82,6 +83,11 @@ El proyecto ejecuta automáticamente la suite de pruebas en cada:
 *   **Push** a ramas principales.
 *   **Pull Request**.
 *   **Ejecución Programada:** Todos los lunes a las 08:00 AM.
+
+### Pipeline Features:
+*   **Matrix Strategy:** Ejecución paralela en múltiples navegadores (Chrome & Firefox).
+*   **Artefactos Dinámicos:** Capturas y videos organizados por navegador en caso de fallos.
+*   **Reportes de Ejecución:** Persistencia de evidencia por 7 días.
 
 ---
 
