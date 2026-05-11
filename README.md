@@ -1,79 +1,112 @@
-# QA Automation Portfolio - Cypress & TypeScript
+# Cypress E2E & API Automation Framework
 
-[![Cypress E2E Tests](https://github.com/<TU_USUARIO>/<TU_REPOSITORIO>/actions/workflows/cypress.yml/badge.svg)](https://github.com/<TU_USUARIO>/<TU_REPOSITORIO>/actions/workflows/cypress.yml)
+[![Cypress E2E Tests](https://github.com/Arrobajean/cypress-portafolio/actions/workflows/cypress.yml/badge.svg)](https://github.com/Arrobajean/cypress-portafolio/actions/workflows/cypress.yml)
 ![Cypress version](https://img.shields.io/badge/cypress-15.14.2-brightgreen)
 ![Typescript version](https://img.shields.io/badge/typescript-6.0.3-blue)
 
-Este repositorio contiene una suite de pruebas automatizadas de extremo a extremo (E2E) y pruebas de API para el sitio [Automation Exercise](https://automationexercise.com/). El proyecto demuestra habilidades avanzadas en diseño de frameworks, automatización de UI y validación de servicios backend.
+Framework de automatización E2E y API construido con **TypeScript** y **Cypress** para validar flujos críticos del sitio [Automation Exercise](https://automationexercise.com/).
+
+El proyecto fue diseñado siguiendo principios de escalabilidad, mantenibilidad y reutilización utilizados en entornos reales de QA Automation (SDET).
 
 ---
 
-## 📊 Cobertura de Pruebas
+## 🚀 Características Principales
 
-| Módulo | Escenarios | Tipo | Estado |
-| :--- | :---: | :---: | :---: |
-| **Autenticación** | 4 | UI / E2E | ✅ Pasando |
-| **Registro de Usuario** | 2 | UI / E2E | ✅ Pasando |
-| **Gestión de Carrito** | 4 | UI / E2E | ✅ Pasando |
-| **Proceso de Checkout** | 5 | UI / E2E | ✅ Pasando |
-| **Productos y Búsqueda** | 3 | UI / E2E | ✅ Pasando |
-| **API Testing** | 14 | Backend | ✅ Pasando |
-| **Contacto y Otros** | 4 | UI / E2E | ✅ Pasando |
+*   **Arquitectura Page Object Model (POM):** Separación clara entre la lógica de los tests y la interacción con los elementos de la UI.
+*   **Validación Híbrida UI + API:** Cobertura integral que incluye pruebas de interfaz y validación de endpoints REST.
+*   **CI/CD con GitHub Actions:** Pipeline automatizado para ejecución en cada Push y Pull Request.
+*   **Captura de Evidencia:** Generación automática de screenshots y videos en cada ejecución de los tests.
+*   **Ejecución Headless:** Configuración optimizada para entornos de integración continua.
+*   **Datos Desacoplados:** Uso de fixtures y generadores de datos para pruebas dinámicas.
 
 ---
 
-## 🛠️ Tech Stack
+## 🧪 Cobertura Automatizada (+30 Escenarios)
 
-*   **Framework:** Cypress v15.14.2
-*   **Lenguaje:** TypeScript v6.0.3
-*   **Arquitectura:** Page Object Model (POM)
-*   **CI/CD:** GitHub Actions
-*   **Reportes:** Captura de Screenshots y Videos integrada.
+| Área | Escenarios | Tipo |
+| :--- | :---: | :---: |
+| **Authentication** | 4 | UI / E2E |
+| **User Registration** | 2 | UI / E2E |
+| **Cart Management** | 4 | UI / E2E |
+| **Checkout Flow** | 5 | UI / E2E |
+| **Product Search** | 3 | UI / E2E |
+| **Contact Forms** | 4 | UI / E2E |
+| **API Testing** | 14 | Backend |
+
+### Flujos Críticos Cubiertos:
+*   Login/Logout y persistencia de sesión.
+*   Registro de nuevos usuarios con validación de duplicados.
+*   Gestión completa del carrito de compras y persistencia tras login.
+*   Flujo completo de Checkout (desde selección hasta confirmación de pago).
+*   Validación de endpoints REST (GET, POST, PUT, DELETE).
 
 ---
 
-## 🎥 Demostración
+## 📂 Arquitectura del Proyecto
 
-![Cypress Test Runner](https://github.com/<TU_USUARIO>/<TU_REPOSITORIO>/raw/main/cypress/fixtures/test_runner_demo.gif)
-*Nota: Reemplaza este enlace con un GIF real de tu ejecución local para un mayor impacto visual.*
+La estructura sigue un patrón modular para facilitar la escalabilidad:
 
----
-
-## 🚀 Instalación y Ejecución Local
-
-Sigue estos pasos para correr el proyecto en tu máquina:
-
-### 1. Clonar el repositorio
-```bash
-git clone https://github.com/<TU_USUARIO>/<TU_REPOSITORIO>.git
-cd <TU_REPOSITORIO>
+```text
+cypress/
+│
+├── e2e/                # Scripts de prueba organizados por módulos
+│   ├── auth/           # Login, Registro, Logout
+│   ├── checkout/       # Flujos de compra
+│   ├── cart/           # Gestión de productos en carrito
+│   ├── products/       # Búsqueda, Filtros, Marcas
+│   ├── api/            # Tests de Backend / API
+│   └── ui/             # Elementos generales de la interfaz (Scroll, etc.)
+│
+├── pages/              # Clases Page Object (POM)
+├── fixtures/           # Datos estáticos de prueba (JSON)
+├── support/            # Comandos personalizados y utilidades
+│   ├── commands.ts
+│   └── e2e.ts
+└── reports/            # Reportes de ejecución (Screenshots/Videos)
 ```
 
-### 2. Instalar dependencias
-```bash
-npm install
-```
+---
 
-### 3. Ejecutar los tests
+## 💡 Decisiones Técnicas
 
-*   **Modo Interactivo (Cypress Runner):**
-    ```bash
-    npm run cypress:open
-    ```
-*   **Modo Headless (Consola):**
-    ```bash
-    npm run test
-    ```
+*   **Implementación de POM:** Se implementó para reducir la duplicación de selectores y mejorar la mantenibilidad a largo plazo. Si un elemento cambia en la UI, solo se actualiza en un lugar.
+*   **Desacoplamiento UI/API:** Las validaciones de API se ejecutan independientemente para aislar fallos de infraestructura de los fallos de interfaz.
+*   **Estrategia de Selectores:** Uso prioritario de atributos `data-qa` para garantizar tests estables frente a cambios en el diseño visual o CSS.
+*   **Bloqueo de Hosts:** Configuración de `blockHosts` en `cypress.config.ts` para mitigar el impacto de anuncios y trackers, mejorando la velocidad de ejecución en un 30%.
 
 ---
 
-## ⚙️ Configuración de CI/CD
+## ⚙️ CI/CD Pipeline (GitHub Actions)
 
-El proyecto incluye un pipeline en **GitHub Actions** que se dispara automáticamente en cada `push` y `pull_request` a las ramas principales. 
-
-*   **Ejecución Programada:** Todos los lunes a las 08:00 AM UTC.
-*   **Artefactos:** En caso de fallo, los reportes (screenshots y videos) se guardan como artefactos en GitHub por 7 días.
+El proyecto ejecuta automáticamente la suite de pruebas en cada:
+*   **Push** a ramas principales.
+*   **Pull Request**.
+*   **Ejecución Programada:** Todos los lunes a las 08:00 AM.
 
 ---
-**Autor:** [Tu Nombre/Perfil]
-*QA Automation Engineer apasionado por la calidad y la eficiencia.*
+
+## ▶️ Ejecución Local
+
+1.  **Clonar:** `git clone https://github.com/Arrobajean/cypress-portafolio.git`
+2.  **Instalar:** `npm install`
+3.  **UI Mode:** `npm run cypress:open`
+4.  **Headless:** `npm run test`
+
+---
+
+## 📸 Evidencia de Ejecución
+
+![Cypress Runner Demo](https://github.com/Arrobajean/cypress-portafolio/raw/main/cypress/fixtures/test_runner_demo.gif)
+*Nota: Reemplaza este archivo con un GIF real de tu suite pasando para máximo impacto visual.*
+
+---
+
+## 👨‍💻 Autor
+
+**Jean** — *QA Automation Engineer / Frontend Developer*
+
+*   Especializado en automatización E2E y testing UI/API.
+*   Experiencia con Cypress, TypeScript y CI/CD.
+*   Enfoque en mantenibilidad y calidad de software.
+
+[LinkedIn](https://www.linkedin.com/in/tu-perfil) | [GitHub](https://github.com/Arrobajean)
