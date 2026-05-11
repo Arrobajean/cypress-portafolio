@@ -1,8 +1,10 @@
 # Professional QA Automation Framework - Cypress & TypeScript
 
-[![Cypress E2E Tests](https://github.com/Arrobajean/cypress-portafolio/actions/workflows/cypress.yml/badge.svg)](https://github.com/Arrobajean/cypress-portafolio/actions/workflows/cypress.yml)
-![Cypress version](https://img.shields.io/badge/cypress-15.14.2-brightgreen)
-![Typescript version](https://img.shields.io/badge/typescript-6.0.3-blue)
+![Cypress](https://img.shields.io/badge/Cypress-15.14.2-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-blue)
+![CI](https://img.shields.io/badge/CI-GitHub_Actions-black)
+![Tests](https://img.shields.io/badge/Tests-40_Passing-brightgreen)
+![Browsers](https://img.shields.io/badge/Browsers-Chrome%20%7C%20Firefox%20%7C%20Edge-orange)
 
 A production-inspired E2E and API automation suite built with **TypeScript** and **Cypress**, designed to validate critical business flows for [Automation Exercise](https://automationexercise.com/).
 
@@ -10,18 +12,30 @@ This framework focuses on **scalability, maintainability, and resilience**, impl
 
 ---
 
-## 🚀 Key Features
+## 🎯 Testing Strategy
 
-*   **Page Object Model (POM) Architecture:** Strict separation of test logic from UI interaction layers.
-*   **Hybrid UI + API Validation:** Comprehensive coverage including interface flows and independent REST endpoint validation.
-*   **Cross-Browser Strategy:** Configured for parallel execution on **Chrome, Firefox, and Edge**.
-*   **Dynamic Test State Recovery:** Implementation of precondition checks that automatically restore user states (login/registration) if they were altered by previous runs.
-*   **Network Interception (`cy.intercept`):** Direct control over XHR/Fetch traffic for precise synchronization and backend response validation.
-*   **Professional CI/CD Pipeline:** Integrated with GitHub Actions using a Matrix Strategy for parallel browser execution.
+The framework prioritizes critical business flows using a layered validation strategy:
+
+- **E2E Tests** for complete, high-value user journeys.
+- **API Tests** for backend validation and early failure detection (Shift-Left approach).
+- **Cross-browser execution** to ensure rendering and functional consistency across different engines.
+- **Independent & Atomic Tests** to avoid shared state dependencies and ensure reliable parallel execution.
+- **Deterministic Synchronization** using network interception (`cy.intercept`) instead of static waits.
 
 ---
 
-## 🧪 Automated Coverage (+30 Scenarios)
+## 🚀 Key Engineering Features
+
+*   **Page Object Model (POM) Architecture:** Strict separation of test logic from UI interaction layers.
+*   **Hybrid UI + API Validation:** Comprehensive coverage including interface flows and independent REST endpoint validation.
+*   **Cross-Browser Capability:** Configured for parallel execution on **Chrome, Firefox, and Edge**.
+*   **Dynamic Test State Recovery:** Resilience mechanism that automatically restores user states (login/registration) if altered by previous runs.
+*   **Network Interception:** Direct control over XHR/Fetch traffic for precise synchronization.
+*   **Enterprise CI/CD Pipeline:** Integrated with GitHub Actions using a Matrix Strategy for parallel browser execution.
+
+---
+
+## 🧪 Automated Coverage (+40 Scenarios)
 
 | Module | Scenarios | Type | Status |
 | :--- | :---: | :---: | :---: |
@@ -32,45 +46,28 @@ This framework focuses on **scalability, maintainability, and resilience**, impl
 | **Product Search** | 3 | UI / E2E | ✅ Passing |
 | **API Testing** | 14 | Backend | ✅ Passing |
 
-### Critical Flows Covered:
-*   Session persistence and multi-state authentication.
-*   Dynamic user registration with duplicate validation.
-*   End-to-end checkout (from product selection to payment confirmation).
-*   RESTful API validation (GET, POST, PUT, DELETE) with status code and schema assertions.
+---
+
+## 💡 Engineering Decisions & Best Practices
+
+*   **Cross-Browser Insights:** Parallel execution uncovered rendering and synchronization inconsistencies specific to **Firefox**, validating the effectiveness of the multi-browser strategy.
+*   **Scalable Locators:** Priority use of `data-qa` attributes to ensure test stability.
+*   **Performance Optimization:** Strategic use of `blockHosts` to mitigate ad-trackers, resulting in a ~30% execution speed improvement.
+*   **Deterministic Testing:** Replaced fixed `cy.wait(N)` with network-aliasing to ensure tests only proceed when requests resolve.
 
 ---
 
-## 📂 Project Architecture
+## 📸 Framework Execution Evidence
 
-```text
-cypress/
-│
-├── e2e/                # Modular test scripts
-│   ├── auth/           # Login, Registration, Logout
-│   ├── checkout/       # Purchase flows
-│   ├── cart/           # Cart management
-│   ├── products/       # Search, Filters, Brands
-│   ├── api/            # Backend / API Tests
-│   └── ui/             # General UI elements (Scroll, etc.)
-│
-├── pages/              # Page Object Classes (POM)
-├── fixtures/           # Static test data (JSON)
-├── support/            # Custom commands and global hooks
-└── reports/            # Artifacts (Screenshots/Videos)
-```
+### CI/CD Pipeline (GitHub Actions - Matrix Execution)
+![GitHub Actions Success Matrix](docs/img/github-actions.png)
+
+### Framework Architecture & UI Runner
+![Framework Preview](docs/img/portfolio-preview.png)
 
 ---
 
-## 💡 Engineering Decisions
-
-*   **Cross-Browser Insights:** Parallel execution uncovered rendering and synchronization inconsistencies specific to **Firefox**, validating the effectiveness of the multi-browser strategy for real-world reliability.
-*   **Scalable Locators:** Priority use of `data-qa` attributes to ensure test stability against UI/CSS changes.
-*   **Performance Optimization:** Strategic use of `blockHosts` in `cypress.config.ts` to mitigate ad-trackers, resulting in a ~30% execution speed improvement.
-*   **Deterministic Testing:** Replaced fixed `cy.wait(N)` with `cy.intercept()` aliases to ensure tests only proceed when network requests resolve.
-
----
-
-## ⚙️ CI/CD Pipeline (GitHub Actions)
+## ⚙️ CI/CD Workflow
 
 The suite runs automatically on:
 *   **Push** to main branches.
@@ -88,20 +85,10 @@ The suite runs automatically on:
 
 ---
 
-## 📸 Execution Evidence
-
-### CI/CD Pipeline (GitHub Actions - Multi-Browser)
-![GitHub Actions Success Matrix](docs/img/github-actions.png)
-
-### Framework Overview
-![Portfolio Preview](docs/img/portfolio-preview.png)
-
----
-
 ## 👨‍💻 About the Author
 
-**Jean** — *QA Automation Engineer / Frontend Developer*
+**Jean** — *QA Automation Engineer*
 
-Specialized in building resilient E2E and API automation frameworks. Focused on software quality, maintainability, and DevOps integration.
+Focused on building scalable E2E frameworks, API testing, and CI/CD automation using Cypress and TypeScript. Committed to software quality and resilient automation architectures.
 
 [LinkedIn](https://www.linkedin.com/in/jeancastanedah/) | [GitHub](https://github.com/Arrobajean)
