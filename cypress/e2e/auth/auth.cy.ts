@@ -5,10 +5,11 @@ describe("Casos de Prueba de Autenticación (2, 3 y 4)", () => {
   const homePage = new HomePage();
   const loginPage = new LoginPage();
   
-  // Datos de usuario para las pruebas de autenticación
+  // Datos de usuario únicos por navegador para evitar conflictos en paralelo
+  const browserName = Cypress.browser.name;
   const usuarioValido = {
-    name: "Jean Tester QA",
-    email: "jean_tester_qa@mail.com",
+    name: `Jean Tester ${browserName}`,
+    email: `jean_tester_${browserName}@mail.com`,
     password: "Password123!"
   };
 
