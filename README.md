@@ -17,6 +17,9 @@ El proyecto fue diseñado siguiendo principios de escalabilidad, mantenibilidad 
 *   **Arquitectura Page Object Model (POM):** Separación clara entre la lógica de los tests y la interacción con los elementos de la UI.
 *   **Validación Híbrida UI + API:** Cobertura integral que incluye pruebas de interfaz y validación de endpoints REST.
 *   **Cross-Browser Testing:** Suite preparada y configurada para ejecuciones en **Chrome, Firefox y Edge**.
+*   **Generación de Datos Dinámicos:** Integración con **Faker.js** para crear escenarios de prueba realistas y variados.
+*   **Network Interception (`cy.intercept`):** Control total del tráfico de red para sincronización precisa y validación de respuestas del backend.
+*   **Custom Commands:** Abstracción de lógica repetitiva mediante comandos personalizados de Cypress.
 *   **CI/CD con GitHub Actions:** Pipeline automatizado con estrategia de matriz para ejecuciones paralelas.
 *   **Captura de Evidencia:** Generación automática de screenshots y videos en cada ejecución de los tests.
 *   **Ejecución Headless:** Configuración optimizada para entornos de integración continua.
@@ -70,11 +73,12 @@ cypress/
 
 ---
 
-## 💡 Decisiones Técnicas
+## 💡 Decisiones Técnicas y Buenas Prácticas
 
-*   **Implementación de POM:** Se implementó para reducir la duplicación de selectores y mejorar la mantenibilidad a largo plazo. Si un elemento cambia en la UI, solo se actualiza en un lugar.
-*   **Desacoplamiento UI/API:** Las validaciones de API se ejecutan independientemente para aislar fallos de infraestructura de los fallos de interfaz.
-*   **Estrategia de Selectores:** Uso prioritario de atributos `data-qa` para garantizar tests estables frente a cambios en el diseño visual o CSS.
+*   **Implementación de POM:** Se implementó para reducir la duplicación de selectores y mejorar la mantenibilidad a largo plazo.
+*   **Uso de Faker.js:** Se eliminaron los datos estáticos en favor de datos aleatorios, lo que ayuda a detectar errores que solo ocurren con ciertos tipos de inputs.
+*   **Network Spying:** Se utiliza `cy.intercept()` para esperar peticiones XHR/Fetch, haciendo que los tests sean deterministas y no dependan de tiempos de espera fijos (`cy.wait(N)`).
+*   **Estrategia de Selectores:** Uso prioritario de atributos `data-qa` para garantizar tests estables.
 *   **Bloqueo de Hosts:** Configuración de `blockHosts` en `cypress.config.ts` para mitigar el impacto de anuncios y trackers, mejorando la velocidad de ejecución en un 30%.
 
 ---
