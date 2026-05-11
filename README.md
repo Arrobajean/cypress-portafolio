@@ -18,7 +18,8 @@ The framework prioritizes critical business flows using a layered validation str
 
 - **E2E Tests** for complete, high-value user journeys.
 - **API Tests** for backend validation and early failure detection (Shift-Left approach).
-- **Cross-browser execution** to ensure rendering and functional consistency across different engines.
+- **Mobile & Responsive Validation** to ensure UI integrity across different devices.
+- **Cross-browser execution** to ensure rendering and functional consistency.
 - **Independent & Atomic Tests** to avoid shared state dependencies and ensure reliable parallel execution.
 - **Deterministic Synchronization** using network interception (`cy.intercept`) instead of static waits.
 
@@ -28,7 +29,9 @@ The framework prioritizes critical business flows using a layered validation str
 
 *   **Page Object Model (POM) Architecture:** Strict separation of test logic from UI interaction layers.
 *   **Hybrid UI + API Validation:** Comprehensive coverage including interface flows and independent REST endpoint validation.
-*   **Cross-Browser Capability:** Configured for parallel execution on **Chrome, Firefox, and Edge**.
+*   **Cross-Browser Capability:** Suite configured for parallel execution on **Chrome, Firefox, and Edge**.
+*   **Mobile & Responsive Testing:** Support for validations across different **Viewports** (Mobile, Tablet, Desktop).
+*   **Dynamic Data Generation:** Integration with **Faker.js** for realistic and varied test scenarios.
 *   **Dynamic Test State Recovery:** Resilience mechanism that automatically restores user states (login/registration) if altered by previous runs.
 *   **Network Interception:** Direct control over XHR/Fetch traffic for precise synchronization.
 *   **Enterprise CI/CD Pipeline:** Integrated with GitHub Actions using a Matrix Strategy for parallel browser execution.
