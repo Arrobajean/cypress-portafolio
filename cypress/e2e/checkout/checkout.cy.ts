@@ -1,6 +1,6 @@
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import CartPage from "../pages/CartPage";
+import HomePage from "../../pages/HomePage";
+import LoginPage from "../../pages/LoginPage";
+import CartPage from "../../pages/CartPage";
 
 describe("Test Case 14: Place Order: Register while Checkout", () => {
   const homePage = new HomePage();

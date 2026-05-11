@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage";
+import HomePage from "../../pages/HomePage";
 
 describe("Exploración de Productos (Casos 8, 9 y 21)", () => {
   const homePage = new HomePage();

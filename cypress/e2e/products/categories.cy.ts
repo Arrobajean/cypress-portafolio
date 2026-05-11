@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage";
+import HomePage from "../../pages/HomePage";
 
 describe("Test Case 18: Navegación por Categorías", () => {
   const homePage = new HomePage();

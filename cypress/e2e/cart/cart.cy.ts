@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage";
+import HomePage from "../../pages/HomePage";
 
 describe("Funcionalidad del Carrito (Casos 12, 13, 17 y 22)", () => {
   const homePage = new HomePage();

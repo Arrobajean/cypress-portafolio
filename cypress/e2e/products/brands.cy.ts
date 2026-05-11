@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage";
+import HomePage from "../../pages/HomePage";
 
 describe("Test Case 19: Navegación por Marcas", () => {
   const homePage = new HomePage();

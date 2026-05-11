@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage";
+import HomePage from "../../pages/HomePage";
 
 describe("Test Case 6: Formulario de Contacto", () => {
   const homePage = new HomePage();

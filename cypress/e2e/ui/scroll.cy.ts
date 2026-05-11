@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage";
+import HomePage from "../../pages/HomePage";
 
 describe("Funcionalidades de Scroll (Casos 25 y 26)", () => {
   const homePage = new HomePage();

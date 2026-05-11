@@ -1,5 +1,5 @@
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
+import HomePage from "../../pages/HomePage";
+import LoginPage from "../../pages/LoginPage";
 
 describe("Test Case 20: Buscar productos y verificar carrito tras Login", () => {
   const homePage = new HomePage();

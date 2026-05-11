@@ -1,5 +1,5 @@
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
+import HomePage from "../../pages/HomePage";
+import LoginPage from "../../pages/LoginPage";
 
 describe("Test Case 1: Registro de Usuario", () => {
   const homePage = new HomePage();

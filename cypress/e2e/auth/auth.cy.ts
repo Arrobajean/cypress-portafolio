@@ -1,5 +1,5 @@
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
+import HomePage from "../../pages/HomePage";
+import LoginPage from "../../pages/LoginPage";
 
 describe("Casos de Prueba de Autenticación (2, 3 y 4)", () => {
   const homePage = new HomePage();

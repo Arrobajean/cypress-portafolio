@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage";
+import HomePage from "../../pages/HomePage";
 
 describe("Casos de Prueba de Suscripción (10 y 11)", () => {
   const homePage = new HomePage();
