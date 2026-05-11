@@ -88,6 +88,16 @@ The suite runs automatically on:
 
 ---
 
+## 📸 Execution Evidence
+
+### CI/CD Pipeline (GitHub Actions - Multi-Browser)
+![GitHub Actions Success Matrix](docs/img/github-actions.png)
+
+### Framework Overview
+![Portfolio Preview](docs/img/portfolio-preview.png)
+
+---
+
 ## 👨‍💻 About the Author
 
 **Jean** — *QA Automation Engineer / Frontend Developer*
