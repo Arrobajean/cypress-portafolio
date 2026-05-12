@@ -1,5 +1,7 @@
 # Professional QA Automation Framework - Cypress & TypeScript
 
+**English 🇺🇸** | [Español 🇪🇸](README.es.md)
+
 ## 🌟 Featured Project: Multi-Browser E2E Suite
 
 This repository showcases a **production-grade E2E and API automation suite** designed for scalability and resilience. It validates critical business flows for [Automation Exercise](https://automationexercise.com/) using industry-standard engineering patterns.
