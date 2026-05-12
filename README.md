@@ -1,8 +1,6 @@
 # Professional QA Automation Framework - Cypress & TypeScript
 
-![Banner](docs/img/banner.png)
-
-## 🌟 Featured Project
+## 🌟 Featured Project: Multi-Browser E2E Suite
 
 This repository showcases a **production-grade E2E and API automation suite** designed for scalability and resilience. It validates critical business flows for [Automation Exercise](https://automationexercise.com/) using industry-standard engineering patterns.
 
@@ -65,12 +63,16 @@ The framework prioritizes critical business flows using a layered validation str
 ## 📸 Framework Execution Evidence
 
 ### CI/CD Pipeline (GitHub Actions - Matrix Execution)
-![Pipeline Visualization](docs/img/pipeline.png)
-*Professional pipeline architecture showing parallel execution across multiple browsers.*
+![GitHub Actions Matrix](docs/img/github-actions-matrix.png)
+*Real-time parallel execution across Chrome, Firefox, and Edge browsers.*
+
+### Full Test Suite Results (+40 Scenarios)
+![Cypress Results](docs/img/github-actions-results.png)
+*100% pass rate across all environments, validating E2E and API layers.*
 
 ### Test Execution & UI Validation
 ![App Preview](docs/img/app-preview.png)
-*Testing critical flows on the [Automation Exercise](https://automationexercise.com/) platform.*
+*Automated validation of critical flows on the [Automation Exercise](https://automationexercise.com/) platform.*
 
 > [!TIP]
 > You can find a full video execution of the authentication suite in [docs/img/execution.mp4](docs/img/execution.mp4).
