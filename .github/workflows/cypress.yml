@@ -8,26 +8,23 @@ on:
   schedule:
     - cron: '0 8 * * 1'
 
-env:
-  # Opt-in para Node.js 24 según sugerencia de GitHub
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         browser: [chrome, firefox, edge]
     
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
+ 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
       - name: Install Dependencies

@@ -10,6 +10,11 @@ export default defineConfig({
     viewportHeight: 720,
     video: true,
     screenshotOnRunFailure: true,
+    retries: {
+      runMode: 2,
+      openMode: 0
+    },
+    defaultCommandTimeout: 10000,
     blockHosts: ["*google-analytics.com", "*doubleclick.net", "*googleadservices.com", "*googlesyndication.com"]
   },
 });
