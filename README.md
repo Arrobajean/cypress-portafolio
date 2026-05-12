@@ -1,14 +1,16 @@
 # Professional QA Automation Framework - Cypress & TypeScript
 
-![Cypress](https://img.shields.io/badge/Cypress-15.14.2-green)
-![TypeScript](https://img.shields.io/badge/TypeScript-6-blue)
-![CI](https://img.shields.io/badge/CI-GitHub_Actions-black)
-![Tests](https://img.shields.io/badge/Tests-40_Passing-brightgreen)
-![Browsers](https://img.shields.io/badge/Browsers-Chrome%20%7C%20Firefox%20%7C%20Edge-orange)
+![Banner](docs/img/banner.png)
 
-A production-inspired E2E and API automation suite built with **TypeScript** and **Cypress**, designed to validate critical business flows for [Automation Exercise](https://automationexercise.com/).
+## 🌟 Featured Project
 
-This framework focuses on **scalability, maintainability, and resilience**, implementing industry-standard patterns used in modern software engineering environments.
+This repository showcases a **production-grade E2E and API automation suite** designed for scalability and resilience. It validates critical business flows for [Automation Exercise](https://automationexercise.com/) using industry-standard engineering patterns.
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/Arrobajean/cypress-portafolio)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?logo=linkedin)](https://www.linkedin.com/in/jeancastanedah/)
+![Cypress](https://img.shields.io/badge/Cypress-15.14.2-green?logo=cypress)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-blue?logo=typescript)
+![CI/CD](https://img.shields.io/badge/CI/CD-GitHub_Actions-black?logo=github-actions)
 
 ---
 
@@ -63,10 +65,15 @@ The framework prioritizes critical business flows using a layered validation str
 ## 📸 Framework Execution Evidence
 
 ### CI/CD Pipeline (GitHub Actions - Matrix Execution)
-![GitHub Actions Success Matrix](docs/img/github-actions.png)
+![Pipeline Visualization](docs/img/pipeline.png)
+*Professional pipeline architecture showing parallel execution across multiple browsers.*
 
-### Framework Architecture & UI Runner
-![Framework Preview](docs/img/portfolio-preview.png)
+### Test Execution & UI Validation
+![App Preview](docs/img/app-preview.png)
+*Testing critical flows on the [Automation Exercise](https://automationexercise.com/) platform.*
+
+> [!TIP]
+> You can find a full video execution of the authentication suite in [docs/img/execution.mp4](docs/img/execution.mp4).
 
 ---
 
