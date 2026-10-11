@@ -40,16 +40,19 @@ El framework prioriza los flujos de negocio críticos mediante una estrategia de
 
 ---
 
-## 🧪 Cobertura Automatizada (+40 Escenarios)
+## 🧪 Cobertura Automatizada (42 Escenarios: 14 API + 28 E2E)
 
-| Módulo | Escenarios | Tipo | Estado |
+Medido con `node scripts/count-tests.mjs` (cuenta `it(` por carpeta bajo `cypress/e2e`):
+
+| Área (carpeta `cypress/e2e`) | Specs | Escenarios (`it`) | Tipo |
 | :--- | :---: | :---: | :---: |
-| **Autenticación** | 4 | UI / E2E | ✅ Pasando |
-| **Registro de Usuario** | 2 | UI / E2E | ✅ Pasando |
-| **Gestión de Carrito** | 4 | UI / E2E | ✅ Pasando |
-| **Flujo de Checkout** | 5 | UI / E2E | ✅ Pasando |
-| **Búsqueda de Productos** | 3 | UI / E2E | ✅ Pasando |
-| **Pruebas de API** | 14 | Backend | ✅ Pasando |
+| `api` | 1 | 14 | Backend |
+| `auth` | 2 | 5 | UI / E2E |
+| `cart` | 2 | 5 | UI / E2E |
+| `checkout` | 1 | 5 | UI / E2E |
+| `products` | 3 | 5 | UI / E2E |
+| `ui` | 5 | 8 | UI / E2E |
+| **Total** | **14** | **42** | — |
 
 ---
 
@@ -68,7 +71,7 @@ El framework prioriza los flujos de negocio críticos mediante una estrategia de
 ![GitHub Actions Matrix](docs/img/github-actions-matrix.png)
 *Ejecución paralela en tiempo real en los navegadores Chrome, Firefox y Edge.*
 
-### Resultados de la Suite Completa (+40 Escenarios)
+### Resultados de la Suite Completa (42 Escenarios: 14 API + 28 E2E)
 ![Cypress Results](docs/img/github-actions-results.png)
 *Tasa de éxito del 100% en todos los entornos, validando las capas E2E y API.*
 

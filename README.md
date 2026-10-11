@@ -40,16 +40,19 @@ The framework prioritizes critical business flows using a layered validation str
 
 ---
 
-## 🧪 Automated Coverage (+40 Scenarios)
+## 🧪 Automated Coverage (42 Scenarios: 14 API + 28 E2E)
 
-| Module | Scenarios | Type | Status |
+Measured with `node scripts/count-tests.mjs` (counts `it(` per folder under `cypress/e2e`):
+
+| Area (`cypress/e2e` folder) | Specs | Scenarios (`it`) | Type |
 | :--- | :---: | :---: | :---: |
-| **Authentication** | 4 | UI / E2E | ✅ Passing |
-| **User Registration** | 2 | UI / E2E | ✅ Passing |
-| **Cart Management** | 4 | UI / E2E | ✅ Passing |
-| **Checkout Flow** | 5 | UI / E2E | ✅ Passing |
-| **Product Search** | 3 | UI / E2E | ✅ Passing |
-| **API Testing** | 14 | Backend | ✅ Passing |
+| `api` | 1 | 14 | Backend |
+| `auth` | 2 | 5 | UI / E2E |
+| `cart` | 2 | 5 | UI / E2E |
+| `checkout` | 1 | 5 | UI / E2E |
+| `products` | 3 | 5 | UI / E2E |
+| `ui` | 5 | 8 | UI / E2E |
+| **Total** | **14** | **42** | — |
 
 ---
 
@@ -68,7 +71,7 @@ The framework prioritizes critical business flows using a layered validation str
 ![GitHub Actions Matrix](docs/img/github-actions-matrix.png)
 *Real-time parallel execution across Chrome, Firefox, and Edge browsers.*
 
-### Full Test Suite Results (+40 Scenarios)
+### Full Test Suite Results (42 Scenarios: 14 API + 28 E2E)
 ![Cypress Results](docs/img/github-actions-results.png)
 *100% pass rate across all environments, validating E2E and API layers.*
 
