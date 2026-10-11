@@ -4,17 +4,32 @@ import LoginPage from "../../pages/LoginPage";
 describe("Casos de Prueba de Autenticación (2, 3 y 4)", () => {
   const homePage = new HomePage();
   const loginPage = new LoginPage();
-  
-  // Datos de usuario únicos por navegador para evitar conflictos en paralelo
+
+  // Datos de usuario únicos por navegador para evitar conflictos en secuencial/paralelo
   const browserName = Cypress.browser.name;
   const usuarioValido = {
     name: `Jean Tester ${browserName}`,
     email: `jean_tester_${browserName}@mail.com`,
-    password: "Password123!"
+    password: "Password123!",
   };
 
   beforeEach(() => {
+    // Self-healing: garantiza existencia via API + login cacheado en cy.session.
+    // Se limpian cookies para arrancar deslogueado y ejercitar el login real por UI.
+    cy.ensureUser(usuarioValido);
+    cy.clearCookies();
+    cy.clearLocalStorage();
     homePage.visit();
+  });
+
+  after(() => {
+    cy.request({
+      method: "DELETE",
+      url: "https://automationexercise.com/api/deleteAccount",
+      form: true,
+      failOnStatusCode: false,
+      body: { email: usuarioValido.email, password: usuarioValido.password },
+    });
   });
 
   it("Test Case 2: Iniciar sesión con email y contraseña correctos", () => {
@@ -27,24 +42,8 @@ describe("Casos de Prueba de Autenticación (2, 3 y 4)", () => {
     // 5. Verificar que 'Login to your account' sea visible
     cy.contains("Login to your account").should("be.visible");
 
-    // Lógica de auto-sanación: Si el usuario no existe (por ejecuciones previas), se registra automáticamente
+    // 6-7. Login con credenciales válidas (usuario garantizado por cy.ensureUser)
     loginPage.login(usuarioValido.email, usuarioValido.password);
-    
-    cy.get("body").then(($body) => {
-      if ($body.text().includes("Your email or password is incorrect!")) {
-        // Registro rápido si el usuario no existe en la base de datos actual
-        loginPage.signup(usuarioValido.name, usuarioValido.email);
-        loginPage.fillAccountDetails(usuarioValido.password);
-        loginPage.fillAddressDetails({
-          firstName: "Jean", lastName: "Tester", company: "QA", address: "Calle QA 1",
-          country: "United States", state: "NY", city: "NYC", zipcode: "10001", mobile: "12345"
-        });
-        cy.get("[data-qa='continue-button']").click();
-        homePage.clickLogout();
-        homePage.clickLogin();
-        loginPage.login(usuarioValido.email, usuarioValido.password);
-      }
-    });
 
     // 8. Verificar el encabezado 'Logged in as username'
     homePage.isLoggedIn();
@@ -60,23 +59,9 @@ describe("Casos de Prueba de Autenticación (2, 3 y 4)", () => {
   it("Test Case 4: Cerrar sesión (Logout)", () => {
     homePage.clickLogin();
 
-    // Re-asegurar existencia del usuario (el TC2 lo elimina)
+    // Login con credenciales válidas (TC2 pudo haber eliminado la cuenta;
+    // beforeEach la recrea via API, sin condicionales en el test)
     loginPage.login(usuarioValido.email, usuarioValido.password);
-
-    cy.get("body").then(($body) => {
-      if ($body.text().includes("Your email or password is incorrect!")) {
-        loginPage.signup(usuarioValido.name, usuarioValido.email);
-        loginPage.fillAccountDetails(usuarioValido.password);
-        loginPage.fillAddressDetails({
-          firstName: "Jean", lastName: "Tester", company: "QA", address: "Calle QA 1",
-          country: "United States", state: "NY", city: "NYC", zipcode: "10001", mobile: "12345"
-        });
-        cy.get("[data-qa='continue-button']").click();
-        homePage.clickLogout();
-        homePage.clickLogin();
-        loginPage.login(usuarioValido.email, usuarioValido.password);
-      }
-    });
 
     // 8. Verificar login exitoso
     homePage.isLoggedIn();
