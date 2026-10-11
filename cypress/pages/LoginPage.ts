@@ -1,5 +1,17 @@
 import BasePage from "./BasePage";
 
+export interface AddressDetails {
+  firstName: string;
+  lastName: string;
+  company: string;
+  address: string;
+  country: string;
+  state: string;
+  city: string;
+  zipcode: string;
+  mobile: string;
+}
+
 export default class LoginPage extends BasePage {
   private loginEmailInput = "[data-qa='login-email']";
   private loginPasswordInput = "[data-qa='login-password']";
@@ -40,7 +52,7 @@ export default class LoginPage extends BasePage {
   }
 
   // Completar información de dirección y contacto
-  fillAddressDetails(details: any) {
+  fillAddressDetails(details: AddressDetails) {
     cy.get("[data-qa='first_name']").type(details.firstName);
     cy.get("[data-qa='last_name']").type(details.lastName);
     cy.get("[data-qa='company']").type(details.company);

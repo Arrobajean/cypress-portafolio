@@ -26,6 +26,16 @@ describe("Test Case 1: Registro de Usuario (Avanzado)", () => {
     homePage.visit();
   });
 
+  after(() => {
+    cy.request({
+      method: "DELETE",
+      url: "https://automationexercise.com/api/deleteAccount",
+      form: true,
+      failOnStatusCode: false,
+      body: { email: "tester_qa_profesional@mail.com", password: "Clave123!" },
+    });
+  });
+
   it("Debe registrar un nuevo usuario usando datos dinámicos y validación de red", () => {
     const fullName = `${userData.firstName} ${userData.lastName}`;
     
@@ -39,7 +49,7 @@ describe("Test Case 1: Registro de Usuario (Avanzado)", () => {
     
     // Esperamos a que la petición se complete (Aceptamos 200 o 302)
     cy.wait("@signupRequest", { timeout: 15000 }).then((interception) => {
-      expect([200, 302]).to.include(interception.response.statusCode);
+      expect([200, 302]).to.include(interception.response?.statusCode);
     });
 
     // Búsqueda de texto insensible a mayúsculas para mayor robustez
@@ -74,26 +84,15 @@ describe("Test Case 1: Registro de Usuario (Avanzado)", () => {
 
   it("Test Case 5: Registro de Usuario con email existente", () => {
     const existingEmail = "tester_qa_profesional@mail.com";
-    
-    // Asegurar existencia del usuario (Data-Driven Pre-requisite)
-    homePage.clickLogin();
-    loginPage.signup("Usuario Senior", existingEmail);
-    
-    cy.get("body").then(($body) => {
-      if ($body.text().includes("Enter Account Information")) {
-        loginPage.fillAccountDetails("Clave123!");
-        loginPage.fillAddressDetails({
-          firstName: "Jean", lastName: "QA", company: "QA Lab", address: "Calle Principal",
-          country: "United States", state: "NY", city: "NYC", zipcode: "10001", mobile: "12345"
-        });
-        cy.get("[data-qa='continue-button']").click();
-        homePage.clickLogout();
-      }
-    });
 
-    homePage.visit(); 
+    // Prerrequisito determinista sin condicionales: garantiza existencia via API
+    cy.ensureUser({ name: "Usuario Senior", email: existingEmail, password: "Clave123!" });
+    cy.clearCookies();
+    cy.clearLocalStorage();
+
+    homePage.visit();
     homePage.clickLogin();
-    
+
     // Intento de duplicado
     loginPage.signup("Usuario Senior", existingEmail);
     cy.contains("Email Address already exist!").should("be.visible");
