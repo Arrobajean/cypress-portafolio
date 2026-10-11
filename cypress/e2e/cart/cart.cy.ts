@@ -42,7 +42,8 @@ describe("Funcionalidad del Carrito (Casos 12, 13, 17 y 22)", () => {
     cy.url().should("include", "/product_details");
 
     // 6. Aumentar la cantidad a 4 unidades
-    cy.get("#quantity").clear().type("4");
+    cy.get("#quantity").clear();
+    cy.get("#quantity").type("4");
 
     // 7. Agregar al carrito
     cy.get("button").contains("Add to cart").click();

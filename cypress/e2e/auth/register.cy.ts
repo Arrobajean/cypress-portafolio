@@ -49,7 +49,7 @@ describe("Test Case 1: Registro de Usuario (Avanzado)", () => {
     
     // Esperamos a que la petición se complete (Aceptamos 200 o 302)
     cy.wait("@signupRequest", { timeout: 15000 }).then((interception) => {
-      expect([200, 302]).to.include(interception.response.statusCode);
+      expect([200, 302]).to.include(interception.response?.statusCode);
     });
 
     // Búsqueda de texto insensible a mayúsculas para mayor robustez

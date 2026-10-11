@@ -61,8 +61,10 @@ Cypress.Commands.add("ensureUser", (user: EnsureUser) => {
     `ensureUser-${user.email}`,
     () => {
       cy.visit("/login");
-      cy.get("[data-qa='login-email']").clear().type(user.email);
-      cy.get("[data-qa='login-password']").clear().type(user.password, { log: false });
+      cy.get("[data-qa='login-email']").clear();
+      cy.get("[data-qa='login-email']").type(user.email);
+      cy.get("[data-qa='login-password']").clear();
+      cy.get("[data-qa='login-password']").type(user.password, { log: false });
       cy.get("[data-qa='login-button']").click();
       cy.contains("Logged in as", { timeout: 15000 }).should("be.visible");
     },
