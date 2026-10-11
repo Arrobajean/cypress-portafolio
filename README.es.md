@@ -61,7 +61,7 @@ Medido con `node scripts/count-tests.mjs` (cuenta `it(` por carpeta bajo `cypres
 
 *   **Insights Multi-navegador:** La ejecución secuencial reveló inconsistencias de renderizado y sincronización específicas de **Firefox**, validando la efectividad de la estrategia multi-navegador.
 *   **Localizadores Escalables:** Uso prioritario de atributos `data-qa` para asegurar la estabilidad de las pruebas.
-*   **Optimización de Rendimiento:** Uso estratégico de `blockHosts` para mitigar rastreadores de anuncios, resultando en una mejora de velocidad de ejecución de ~30%.
+*   **Reducción de Ruido de Terceros:** Uso estratégico de `blockHosts` para mitigar rastreadores de anuncios inestables en el sitio de terceros (sin porcentaje de mejora declarado: medirlo requeriría ejecuciones completas repetidas).
 *   **Pruebas Deterministas:** Se reemplazó el `cy.wait(N)` fijo por alias de red para asegurar que las pruebas solo avancen cuando las peticiones se resuelven.
 
 ---
@@ -74,7 +74,7 @@ Medido con `node scripts/count-tests.mjs` (cuenta `it(` por carpeta bajo `cypres
 
 ### Resultados de la Suite Completa (42 Escenarios: 14 API + 28 E2E)
 ![Cypress Results](docs/img/github-actions-results.png)
-*Tasa de éxito del 100% en todos los entornos, validando las capas E2E y API.*
+*Salida de ejemplo de la suite en las capas E2E y API (sin afirmación de tasa de éxito: requeriría ejecuciones completas repetidas en los navegadores).*
 
 ### Ejecución de Pruebas y Validación de UI
 ![App Preview](docs/img/app-preview.png)

@@ -61,7 +61,7 @@ Measured with `node scripts/count-tests.mjs` (counts `it(` per folder under `cyp
 
 *   **Cross-Browser Insights:** Sequential execution uncovered rendering and synchronization inconsistencies specific to **Firefox**, validating the effectiveness of the multi-browser strategy.
 *   **Scalable Locators:** Priority use of `data-qa` attributes to ensure test stability.
-*   **Performance Optimization:** Strategic use of `blockHosts` to mitigate ad-trackers, resulting in a ~30% execution speed improvement.
+*   **Third-Party Noise Reduction:** Strategic use of `blockHosts` to mitigate flaky ad-trackers on the third-party site (no speedup percentage claimed: measuring it would require repeated full-suite runs).
 *   **Deterministic Testing:** Replaced fixed `cy.wait(N)` with network-aliasing to ensure tests only proceed when requests resolve.
 
 ---
@@ -74,7 +74,7 @@ Measured with `node scripts/count-tests.mjs` (counts `it(` per folder under `cyp
 
 ### Full Test Suite Results (42 Scenarios: 14 API + 28 E2E)
 ![Cypress Results](docs/img/github-actions-results.png)
-*100% pass rate across all environments, validating E2E and API layers.*
+*Example suite output across E2E and API layers (no pass-rate claim: it would require repeated full runs across browsers).*
 
 ### Test Execution & UI Validation
 ![App Preview](docs/img/app-preview.png)
