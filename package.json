@@ -1,7 +1,7 @@
 {
   "name": "cypress-portafolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Production-grade Cypress + TypeScript E2E and API automation suite for Automation Exercise",
   "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
@@ -12,9 +12,13 @@
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Jean Paul Castañeda Huerta",
+  "license": "MIT",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  },
   "devDependencies": {
     "@faker-js/faker": "^10.4.0",
     "cypress": "^15.14.2",
